@@ -24,12 +24,29 @@ html {
   height: 100vh;
   overflow-y: auto;
   overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
-.app::-webkit-scrollbar {
-  display: none;
+
+/* Hide scrollbar for large screens (e.g., desktops) */
+@media (min-width: 1024px) {
+  .app {
+    overflow-x: hidden; /* Disable scrolling */
+    -ms-overflow-style: none; /* Hide scrollbar for IE & Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
 }
+
+/* Show scrollbar for small screens (e.g., mobile & tablets) */
+@media (max-width: 1023px) {
+  .app {
+    -ms-overflow-style: none; /* Hide scrollbar for IE & Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  .app::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Navbar
